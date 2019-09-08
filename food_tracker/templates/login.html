@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+        <style type="text/css">
+            html,
+            body {
+                height: 100%;
+            }
+
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            .form-signin {
+                width: 100%;
+                max-width: 330px;
+                padding: 15px;
+                margin: auto;
+            }
+        </style>
+
+    </head>
+
+    <body class="text-center">
+        <form class="form-signin" method="POST" action="{% url 'auth_login' %}" role="form">
+            {% csrf_token %}
+
+            <h1>My Food Tracker</h1>
+
+            {{ form.username.label }}
+            {{ form.username }}
+
+            {{ form.password.label }}
+            {{ form.password }}
+
+            <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+            <input type="hidden" name="next" value="{% url 'food:index' %}" />
+        </form>
+    </body>
+</html>
